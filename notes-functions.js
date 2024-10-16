@@ -30,6 +30,7 @@ const removeNote = function(id){
 const generateNoteDOM = function(note){
     const noteEl = document.createElement('div')
     const textEl = document.createElement('span')
+    const linkEl = document.createElement('a')
     const btnEl = document.createElement('button')
 
     // Remove note button
@@ -42,8 +43,14 @@ const generateNoteDOM = function(note){
     })
 
     // Note text
-    textEl.textContent = (note.title.length > 0) ? note.title.length : 'Unnamed note'
-    noteEl.appendChild(textEl)
+    textEl.textContent = (note.title.length > 0) ? note.title : 'Unnamed note'
+
+    // Edit note link
+    linkEl.appendChild(textEl)
+    linkEl.href = `./edit.html#${note.id}`
+
+    
+    noteEl.appendChild(linkEl)
 
     return noteEl
 }
