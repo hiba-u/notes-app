@@ -1,4 +1,4 @@
-const notes = getSavedNotes()
+let notes = getSavedNotes()
 
 const filters = {
     searchText: '',
@@ -30,4 +30,13 @@ document.querySelector('#search-text').addEventListener('input', function(e){
 // Sort notes
 document.querySelector('#sort-by').addEventListener('change', function(e){
     console.log(e.target.value)
+})
+
+
+// Sync data across pages
+window.addEventListener('storage', function(e){
+    if(e.key === 'notes'){
+        notes = JSON.parse(e.newValue)
+        renderNotes(notes, filters)
+    }
 })
