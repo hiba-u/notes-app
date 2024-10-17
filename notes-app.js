@@ -2,6 +2,7 @@ let notes = getSavedNotes()
 
 const filters = {
     searchText: '',
+    sortBy: 'byEdited'
 }
 
 renderNotes(notes, filters)
@@ -32,7 +33,9 @@ document.querySelector('#search-text').addEventListener('input', function(e){
 
 // Sort notes
 document.querySelector('#sort-by').addEventListener('change', function(e){
-    console.log(e.target.value)
+    // console.log(e.target.value)
+    filters.sortBy = e.target.value
+    renderNotes(notes, filters)
 })
 
 
