@@ -8,7 +8,7 @@ const filters = {
 renderNotes(notes, filters)
 
 // Create note
-document.querySelector("#create-note").addEventListener('click', function(e){
+document.querySelector("#create-note").addEventListener('click', (e) => {
     const id = uuidv4()
     const currentTimestamp = moment().valueOf()
     notes.push({
@@ -25,14 +25,14 @@ document.querySelector("#create-note").addEventListener('click', function(e){
 })
 
 // Filter notes by title
-document.querySelector('#search-text').addEventListener('input', function(e){
+document.querySelector('#search-text').addEventListener('input', (e) => {
     
     filters.searchText = e.target.value
     renderNotes(notes, filters)
 })
 
 // Sort notes
-document.querySelector('#sort-by').addEventListener('change', function(e){
+document.querySelector('#sort-by').addEventListener('change', (e) => {
     // console.log(e.target.value)
     filters.sortBy = e.target.value
     renderNotes(notes, filters)
@@ -40,7 +40,7 @@ document.querySelector('#sort-by').addEventListener('change', function(e){
 
 
 // Sync data across pages
-window.addEventListener('storage', function(e){
+window.addEventListener('storage', (e) => {
     if(e.key === 'notes'){
         notes = JSON.parse(e.newValue)
         renderNotes(notes, filters)
